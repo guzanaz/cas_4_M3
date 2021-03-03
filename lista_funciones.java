@@ -32,14 +32,9 @@ public class lista_funciones {
 		
 	//QUÉ NECESITAREMOS?
 	 	//una variable para guardarnos el nro. elem. del array llista_classe (contador) 
-	 	int num_elements = 0;
-	 	// una variable para guardarnos la posición de elementos
-	 	int p=0;
-	 	//nombre a insertar
-//	 	String x;
+	 	int num_elements = 11;	 	
 	 	
-	 	
-	 	//array lista de clase (con 11 elementos de tipo string) en un método
+	 	//array lista de clase (con 11 elementos de tipo string) 
 	 	String[] llista_classe =new String[11];
 	 	llista_classe[0]="El Khattabi";
 	 	llista_classe[1]="Girbes";
@@ -50,9 +45,9 @@ public class lista_funciones {
 	 	llista_classe[6]="Queralt";
 	 	llista_classe[7]="Román";
 	 	llista_classe[8]="Rkouni";
-//	 	llista_classe[9]="Gallardo";
-//	 	llista_classe[10]="Masana";
-//	 	llista_classe[]="";
+	 	llista_classe[9]="Gallardo";
+	 	llista_classe[10]="Masana";
+
 	 	
 		
 		// 1. Declarar array con opcions del menú fuera de la función
@@ -64,7 +59,7 @@ public class lista_funciones {
 				opcions[4]="[e]suprimirDada";
 				opcions[5]="[f]anul_la";
 				opcions[6]="[g]primerDarrer";
-				opcions[7]="[h]imprimir:";
+				opcions[7]="[h]imprimir";
 				opcions[8]="[i]ordenar";
 				opcions[9]="[j]localitzarEnOrdenada";
 				opcions[10]="[k]sortir";
@@ -95,7 +90,9 @@ public class lista_funciones {
 							break;
 							
 							case 'c':// recuperar
-								
+								System.out.println("------ FUNCIÓ: [c]Recuperar ------\n");
+								//llamamos a la función recuperar
+								recuperar(num_elements,llista_classe);	
 							break;
 							
 							case 'd':// suprimir
@@ -116,9 +113,6 @@ public class lista_funciones {
 							
 							case 'h':// imprimir
 								System.out.println("------ FUNCIÓ: [h]IMPRIMIR ------\n");
-//								int a = num_elements;
-//								String[] b = llista_classe;
-								//llamamos a la función imprimir
 								imprimir(num_elements,llista_classe);
 
 							break;
@@ -167,11 +161,11 @@ public class lista_funciones {
 		/**
 		 * Función inserir.
 		 * Inserta un elemento nuevo en llista_classe en una posición determinada
-		 * con el paso de valores por referencia
-		 * @param n: es el contador de elementos que hay en el array con la llista_clase
+		 * con el paso de valores por referencia (num_elements=n y llista_classe=llista) 
+		 * @param n:Es el contador de elementos que hay en el array llista_clase
 		 * @param llista: es el array inicial en el que se insertará el nuevo elemento 
 		 * @return n: es el nuevo valor que retorna la función cuando se inserta un nuevo
-		 * elemento en llista_classe
+		 * elemento en el array llista
 		 */
 			  
 		  public static int inserir(int n, String[] llista) {
@@ -216,8 +210,9 @@ public class lista_funciones {
 		  
 		/**
 		 * Función Localitzar.
-		 * Encuentra un elemento de tipo String dentro del array llista y nos dice su posición
-		 * si el elemento no está también lo informa. Es case sensitive.
+		 * Encuentra un elemento de tipo String dentro del array llista_classe y nos dice su posición
+		 * con el paso de valores por referencia (num_elements=n y llista_classe=llista) 
+		 * si el elemento no está también lo informa. Es case sensitive. 
 		 * @param n: contador de las posiciones de los elementos dentro del array llista
 		 * @param llista: array que contiene los elementos de tipo String
 		 * @return void
@@ -235,8 +230,10 @@ public class lista_funciones {
 			     	for (posicio=0;posicio<n;posicio++) {
 			     		if(x.equals(llista[posicio])){
 			     			System.out.println("la posició de nom " +x+" es "+ (posicio+1));
-			     		}else if(x.equals(llista[posicio])) {
+			     			
+			     		}else if(posicio=n&&!x.equals(llista[posicio])) {
 			     			System.out.println("el nombre no está en la lista");
+			     			
 			     		}
 			     	}
 			 	}
@@ -245,6 +242,54 @@ public class lista_funciones {
 		  }
 		  
 
+		  /**
+			 * Función Recuperar.
+			 * Encuentra un elemento de tipo int dentro del array llista_classe y nos dice su valor
+			 * con el paso de valores por referencia (num_elements=n y llista_classe=llista) 
+			 * si el elemento no está también lo informa. Es case sensitive. 
+			 * @param n: contador de las posiciones de los elementos dentro del array llista
+			 * @param llista: array que contiene los elementos de tipo String
+			 * @return void
+			 */
+			  @SuppressWarnings("unused")
+			public static void recuperar(int n,String[]llista) {
+				  Scanner sc=new Scanner(System.in);
+				  int p=0;  
+				  if (n == 0) {
+                        //advertencia
+                        System.out.println("\n");
+                        System.out.println("──────────────────────────────────────────────");
+                        System.out.println("   Lista vacía ¡Nada que podamos recuperar!   ");
+                        System.out.println("──────────────────────────────────────────────");
+                        System.out.println("\n");
+                    } else {
+                        System.out.println("Escribe la posición que desees recuperar");
+                        p = sc.nextInt();
+                        p = p - 1;
+
+                        while (p < 0 || p > n) {
+                            System.out.println("Posición incorrecta. Ha de ser entre 1 i " + n);
+                            System.out.println("Escribe la posición que desees recuperar");
+                            p = sc.nextInt();
+                            p = p - 1;
+                            
+                            for (int i = 0; i <= n;i++) {
+                                if (p == i) {
+                                    System.out.print("El apellido en la posición " + (p + 1) + " es " + llista[i] + "\n");
+                               
+                                }
+                            }
+
+                        
+                            return;
+                        }
+                    }
+				  
+				  return;
+			  }
+		  
+		  
+		  
 		 /**
 		  * Función imprimir.
 		  * Imprime por pantalla los elementos del array llista_classe.
@@ -260,8 +305,3 @@ public class lista_funciones {
 		 
 		 
 }//fin del programa
-
-	
-
-
-
