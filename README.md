@@ -14,6 +14,6 @@ _Programa similar al que pedía el enunciado del [Cas 3](https://github.com/guza
 ## Otros datos
 
 * **Módulo** - M03 Programación básica
-* **Ciclo y aula** - ASIX-DAW 1
+* **Ciclo y aula** - ASIX-DAW 1B
 * **Inicio del proyecto** - Febrero 2021
 
